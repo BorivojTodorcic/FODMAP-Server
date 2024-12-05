@@ -10,12 +10,12 @@ import {
     DATABASE_USER,
     GCS_CREDENTIALS,
     PROJECT_ID,
-} from "./config.js";
+} from "../config.js";
 
 // Routes
-import { ingredientRoutes } from "./routes/ingredient.route.js";
-import { recipeRoutes } from "./routes/recipe.route.js";
-import { mealsRoutes } from "./routes/meals.route.js";
+import { ingredientRoutes } from "../routes/ingredient.route.js";
+import { recipeRoutes } from "../routes/recipe.route.js";
+import { mealsRoutes } from "../routes/meals.route.js";
 
 const cloudStorage = new Storage({
     credentials: JSON.parse(GCS_CREDENTIALS),

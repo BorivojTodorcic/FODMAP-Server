@@ -2,9 +2,14 @@ import ImageService from "../services/image.service.js";
 import RecipeService from "../services/recipe.service.js";
 import paginate from "../utils/recipe.utils.js";
 
-const TABLE_NAME = "test_meals"
+const TABLE_NAME = "test_meals";
 
 export const recipeRoutes = (app, sql, upload, bucket) => {
+  app.get("/api/test", (req, res) => {
+    res.send({ message: "working" });
+    res.status(200);
+  });
+
   app.post(
     "/api/new_recipe_submitted",
     upload.single("recipe_image"),
@@ -37,7 +42,6 @@ export const recipeRoutes = (app, sql, upload, bucket) => {
   );
 
   app.get("/recipes", async (req, res) => {
-    
     //   Get pagination information using query params and DB table name
     const { totalRecords, totalPages, currentPage, limit } = await paginate(
       sql,
@@ -54,7 +58,7 @@ export const recipeRoutes = (app, sql, upload, bucket) => {
 
     const RecipeImage = new ImageService(bucket);
 
-    // Creates an array of recipe objects including the recipe image URL 
+    // Creates an array of recipe objects including the recipe image URL
     const recipesWithImageURL = await Promise.all(
       recipes.map(async (recipe) => {
         const image_url = await RecipeImage.get_image_url(recipe.gcs_file_name);

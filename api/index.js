@@ -27,6 +27,7 @@ const bucket = cloudStorage.bucket(BUCKET_NAME);
 
 const sql = postgres({
     host: DATABASE_HOST, // Postgres ip address[s] or domain name[s]
+    ssl: "require",
     port: 5432, // Postgres server port[s]
     database: DATABASE_NAME, // Name of database to connect to
     username: DATABASE_USER, // Username of database user

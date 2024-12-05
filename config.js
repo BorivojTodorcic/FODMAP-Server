@@ -25,9 +25,14 @@ if (!process.env.DATABASE_PASSWORD) {
     throw new Error("Please provide database password");
 }
 
+if (!process.env.DATABASE_HOST) {
+    throw new Error("Please provide database host");
+}
+
 export const DATABASE_NAME = process.env.DATABASE_NAME;
 export const DATABASE_USER = process.env.DATABASE_USER;
 export const DATABASE_PASSWORD = process.env.DATABASE_PASSWORD;
+export const DATABASE_HOST = process.env.DATABASE_HOST;
 
 export const GCS_CREDENTIALS = process.env.GOOGLE_CLOUD_CREDENTIALS;
 export const BUCKET_NAME = process.env.BUCKET_NAME;

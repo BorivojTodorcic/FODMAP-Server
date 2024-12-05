@@ -5,6 +5,7 @@ import multer from "multer";
 import { Storage } from "@google-cloud/storage";
 import {
     BUCKET_NAME,
+    DATABASE_HOST,
     DATABASE_NAME,
     DATABASE_PASSWORD,
     DATABASE_USER,
@@ -25,7 +26,7 @@ const cloudStorage = new Storage({
 const bucket = cloudStorage.bucket(BUCKET_NAME);
 
 const sql = postgres({
-    host: "localhost", // Postgres ip address[s] or domain name[s]
+    host: DATABASE_HOST, // Postgres ip address[s] or domain name[s]
     port: 5432, // Postgres server port[s]
     database: DATABASE_NAME, // Name of database to connect to
     username: DATABASE_USER, // Username of database user

@@ -1,4 +1,3 @@
-import { data } from "../test.js";
 import ImageService from "../services/image.service.js";
 import { addRemainingDays, groupByDate } from "../utils/meal.utils.js";
 import { addDays, formatISO } from "date-fns";
@@ -12,11 +11,6 @@ remove meal at date
 */
 
 export const mealsRoutes = (app, sql, bucket) => {
-  app.get("/api/meal_planner", (request, response) => {
-    response.send(JSON.stringify(data));
-    response.status(201);
-  });
-
   app.get("/api/meal_planners", async (request, response) => {
     const user_id = 1;
     const startDate = new Date(request.query.week);
